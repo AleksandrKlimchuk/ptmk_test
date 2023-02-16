@@ -9,16 +9,17 @@ import org.springframework.stereotype.Component;
 public class TaskFactory {
 
     private final CreateTableService createTableService;
+    private final InsertHumanService insertHumanService;
 
     public AbstractTask createTask(String... commandLineArgs) {
         validateArgs(commandLineArgs);
         String taskNumber = commandLineArgs[0];
-        switch (taskNumber) {
-            case "1":
-                return createTableService;
-            default:
-                throw new IllegalStateException("Unexpected task number: " + taskNumber + ". Available tasks: 1-5");
-        }
+        return switch (taskNumber) {
+            case "1" -> createTableService;
+            case "2" -> insertHumanService;
+            default ->
+                    throw new IllegalStateException("Unexpected task number: " + taskNumber + ". Available tasks: 1-5");
+        };
 
     }
 
