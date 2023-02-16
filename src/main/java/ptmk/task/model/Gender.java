@@ -22,4 +22,8 @@ public enum Gender {
             default -> throw new IllegalArgumentException("Illegal gender: specify male of female");
         };
     }
+
+    public static Gender of(int state) {
+        return (state == 1) ? MALE : FEMALE;
+    }
 }
