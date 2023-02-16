@@ -1,11 +1,25 @@
 package ptmk.task;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
 public class Main {
 
     public static void main(String[] args) {
-        if (args[0].equals("1")) {
-            System.out.println("1 point");
-        }
-        System.out.println("Working from console");
+        SpringApplication.run(Main.class, args);
+    }
+
+    @Bean
+    public CommandLineRunner commandLineRunner() {
+
+        return args -> {
+            System.out.println("Here");
+            if (args[0].equals("1")) {
+                System.out.println("1 point");
+            }
+        };
     }
 }
