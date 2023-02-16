@@ -13,6 +13,6 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        taskFactory.createTask(args).run();
+        taskFactory.createTask(args).run(args);
     }
 }

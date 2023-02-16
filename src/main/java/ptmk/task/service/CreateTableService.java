@@ -11,7 +11,7 @@ public class CreateTableService implements AbstractTask {
     private final HumanRepository repository;
 
     @Override
-    public void run() {
+    public void run(String... args) {
         repository.createTable();
     }
 }

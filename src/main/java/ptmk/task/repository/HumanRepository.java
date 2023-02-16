@@ -3,6 +3,7 @@ package ptmk.task.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import ptmk.task.model.Human;
 
 @Repository
 @RequiredArgsConstructor
@@ -18,5 +19,10 @@ public class HumanRepository {
                 "gender INTEGER NOT NULL);";
 
         jdbc.execute(sql);
+    }
+
+    public void insertHuman(Human human) {
+        final String sql = "INSERT INTO human (fullname, birthday, gender) VALUES (?, ?, ?);";
+        jdbc.update(sql, human.getFullName(), human.getBirthday(), human.getGender().getState());
     }
 }
