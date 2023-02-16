@@ -12,6 +12,7 @@ public class TaskFactory {
     private final InsertHumanService insertHumanService;
     private final UniqueHumanSelectorService uniqueHumanSelectorService;
     private final MultipleInsertionsService multipleInsertionsService;
+    private final FMaleSelectorService fMaleSelectorService;
 
     public AbstractTask createTask(String... commandLineArgs) {
         validateArgs(commandLineArgs);
@@ -21,6 +22,7 @@ public class TaskFactory {
             case "2" -> insertHumanService;
             case "3" -> uniqueHumanSelectorService;
             case "4" -> multipleInsertionsService;
+            case "5" -> fMaleSelectorService;
             default ->
                     throw new IllegalStateException("Unexpected task number: " + taskNumber + ". Available tasks: 1-5");
         };

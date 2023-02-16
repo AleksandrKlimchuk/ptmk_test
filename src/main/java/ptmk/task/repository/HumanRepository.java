@@ -70,4 +70,16 @@ public class HumanRepository {
             }
         });
     }
+
+    public List<HumanDTO> findFMales() {
+        final String sql = "select * from human where gender=1 AND starts_with(fullname, 'F');";
+        RowMapper<HumanDTO> humanDTORowMapper = (
+                (rs, rowNum) -> HumanDTO.builder()
+                        .fullname(rs.getString("fullname"))
+                        .birthday(rs.getDate("birthday"))
+                        .gender(Gender.of(rs.getInt("gender")))
+                        .build()
+        );
+        return jdbc.query(sql, humanDTORowMapper);
+    }
 }
